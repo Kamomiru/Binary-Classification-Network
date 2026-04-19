@@ -8,10 +8,10 @@ DIM_Y = 10
 def curve_imp(x,y) -> float:
     return (x-6)**3 + y**2 - 8
 
-"""
-def curve_imp(x,y) -> float:
+
+def curve2_imp(x,y) -> float:
     return x*3 * np.sin(y)+ y*3 * np.cos(x)
-"""
+
 
 def get_sample(foo): 
     x = np.random.uniform(0,DIM_X)
@@ -32,22 +32,15 @@ def get_sample_set(foo, n):
         set.append(get_sample(foo))
     return set
 
-class MyDataSet(utils.data.Dataset):
-    def __init__(self, n):
-        super(MyDataSet).__init__()
-        self.set = get_sample_set(curve_imp, n)
+class DataSet(utils.data.Dataset):
+    def __init__(self, n, function):
+        super(DataSet).__init__()
+        self.set = get_sample_set(function, n)
 
     def __getitem__(self, index):
         return self.set[index]
     
     def __len__(self):
         return len(self.set)
-
-
-#print(get_sample(curve_imp))
-
-#print(get_sample_set(curve_imp, 5))
-
-set = MyDataSet(10)
 
 

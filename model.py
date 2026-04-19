@@ -2,22 +2,23 @@ import torch
 
 class Model(torch.nn.Module):
 
-    def __init__(self):
+    def __init__(self, ActivationFunction):
         super(Model, self).__init__()
+        
+        self.activation = ActivationFunction()
 
         self.linear1 = torch.nn.Linear(2,8)
-        self.sigm = torch.nn.Sigmoid()
         self.linear2 = torch.nn.Linear(8,8)
         self.linear3 = torch.nn.Linear(8,4)
         self.linear4 = torch.nn.Linear(4,1)
 
     def forward(self, x):
         x = self.linear1(x)
-        x = self.sigm(x)
+        x = self.activation(x)
         x = self.linear2(x)
-        x = self.sigm(x)
+        x = self.activation(x)
         x = self.linear3(x)
-        x = self.sigm(x)
+        x = self.activation(x)
         x = self.linear4(x)
         """
         !!Loss Function torch.nn.BCEWithLogitsLoss() needs logits as output not probability between 0 and 1 to properly work
