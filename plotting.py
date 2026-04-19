@@ -68,10 +68,10 @@ def plot_results(curve):
     #-----Loss Plot-----
     fig, ax = plt.subplots(2,2)
 
-    plot_loss(ax[0,0], loss_data["SGD_Sigm"], "Stochastic Gradient Descent Sigmoid")
-    plot_loss(ax[0,1], loss_data["Adam_Sigm"], "Adam Optimizer Sigmoid")
-    plot_loss(ax[1,0], loss_data["SGD_ReLU"], "Stochastic Gradient Descent ReLU")
-    plot_loss(ax[1,1], loss_data["SGD_ReLU"], "Adam Optimizer ReLU")
+    plot_loss(ax[0,0], loss_data["SGD_Sigm"], "SGD Sigmoid")
+    plot_loss(ax[0,1], loss_data["Adam_Sigm"], "Adam Sigmoid")
+    plot_loss(ax[1,0], loss_data["SGD_ReLU"], "SGD ReLU")
+    plot_loss(ax[1,1], loss_data["Adam_ReLU"], "Adam ReLU")
 
     #-----Decicion Boundary Plot-----
     fig2, ax2 = plt.subplots(2,3)
@@ -91,9 +91,10 @@ def plot_results(curve):
 
     #plot actual function 
     ax2[0,2].contourf(X,Y,np.sign(curve(X,Y)), alpha = 0.3)
-
+    ax2[0,2].set_title("Actual Function")
+    ax2[0,2].axis("equal")
     plt.show()
 
 
 if __name__ == "__main__":
-    plot_results(curve_imp)
+    plot_results(curve2_imp)

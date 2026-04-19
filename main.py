@@ -13,7 +13,7 @@ MyModel_SGD_ReLU = Model(torch.nn.ReLU)
 MyModel_Adam_ReLU = Model(torch.nn.ReLU)
 
 #Training Data Setup
-training_set = DataSet(40000, curve_imp)
+training_set = DataSet(40000, curve2_imp)
 #validation_set = DataSet(4000, curve_imp)
 
 """DataLoader is simply a class wrapper that returns an iterator when called.
